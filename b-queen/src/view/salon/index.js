@@ -201,9 +201,11 @@ function Salon(props) {
 
   const reduceItemSummary = (itemID) => {
     const index = order.findIndex((item) => item.id === itemID);
+    if(order[index].quantity !== 1){
       order[index].quantity--
       setOrder([...order]);
-         
+    } 
+               
   }
 
   const removeItem = (itemID) => {
