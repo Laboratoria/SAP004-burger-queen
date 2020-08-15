@@ -50,6 +50,10 @@ const Readyorders = () =>  {
         setAllOldOrders(allOldOrders.filter((removeItem) => removeItem.id != item.id))
     }
 
+    const msForMin = (msPar) =>{
+        return Math.round(msPar/60000)
+    }
+
     return(
         <div>
             <Header
@@ -66,7 +70,7 @@ const Readyorders = () =>  {
                     {
                         allOldOrders.map(item =>
 
-                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={ "Tempo de Preparo: " + item.timeDifference + " ms"} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
+                            <Card client={item.clientName} tableNumber={item.tableNumber} worker={item.attendantName} viewRequests={item.requests} time={ "Tempo de Preparo: " + msForMin(item.timeDifference) + " min"} sendClick={() =>{deleteOrder(item)}} buttonTitle='SERVIR PEDIDO' />
                                                 
                         )
                     }
