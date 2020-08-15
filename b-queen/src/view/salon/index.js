@@ -25,7 +25,7 @@ function Salon(props) {
   const menuAllDay = [];
   const menuBreakfast = [];
   const [options, setOptions] = useState('');
-
+  
   const firebaseRequisition = (collectionP, arrayP, setP) => {
     firebase
       .firestore()
@@ -60,9 +60,7 @@ function Salon(props) {
   const sendRequest = () => {
 
     if ((tableNumberValue !== "" && clientNameValue !== "") && order.length !== [].length) {
-      //tableNumberValue !== ""   clientNameValue !== ""      order.length !== [].length
-
-      
+            
           firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
             .get()
             .then((querySnapshot) => {
@@ -111,16 +109,91 @@ function Salon(props) {
   }
 
   const addItem = (itemID) => {
-    const index = order.findIndex((item) => item.id === itemID.id);
-    if (index === -1) {
-      setOrder([...order, { ...itemID, quantity: 1 }]);
-    } else {
-      order[index].quantity++
-      setOrder([...order]);
-    }
-  };
+    let index = order.findIndex((item) => item.id === itemID.id);
+
+    if(status == true){
+      console.log("manha")
+      const indexBF = breakfast.findIndex((item) => item.id === itemID.id);
+
+      if(breakfast[indexBF].options !== undefined){
+        if(options !== ""){
+          if (index === -1) {
+            setOrder([...order, { ...itemID, quantity: 1 }]);
+            setOptions("");
+            
+          } else {
+            order[index].quantity++
+            setOrder([...order]);
+            order[index]["option"] = options;
+            setOptions("");
+            console.log(order)
+          }
+        }
+      }else{
+        if (index === -1) {
+          setOrder([...order, { ...itemID, quantity: 1 }]);
+          setOptions("");
+          
+        } else {
+          order[index].quantity++
+          setOrder([...order]);
+          order[index]["option"] = options;
+          setOptions("");
+          console.log(order)
+        }
+      }
+      
+    }else{
+      console.log("dia")
+      let indexAD = allDay.findIndex((item) => item.id === itemID.id);
+      console.log(allDay)
+      if(allDay[indexAD].options !== undefined){
+        if(options !== ""){
+          if (index === -1) {
+            
+            allDay[indexAD]["option"] = options;
+            
+            let newItem = {
+              id: allDay[indexAD].id + allDay[indexAD].option,
+              name: allDay[indexAD].name,
+              option: allDay[indexAD].option,
+              options: allDay[indexAD].options,
+              price: allDay[indexAD].price,
+              quantity: 1
+            }
+
+            
+            
+            //setOrder([...order, { ...itemID, quantity: 1 }]);
+            setOrder( [...order, newItem])
+            setOptions("");
+            console.log(allDay)
+          } else {
+            order[index].quantity++
+            setOrder([...order]);
+            setOptions("");
+          }
+        }
+      }else{
+        if (index === -1) {
+          setOrder([...order, { ...itemID, quantity: 1 }]);
+          setOptions("");
+          
+        } else {
+          order[index].quantity++
+          setOrder([...order]);
+          order[index]["option"] = options;
+          setOptions("");
+          console.log(order)
+        }
+      }
+    }  
+    console.log(order)
+    
+  }
 
   const addItemSummary = (itemID) => {
+    console.log(itemID)
     const index = order.findIndex((item) => item.id === itemID);
     order[index].quantity++
     setOrder([...order]);
@@ -128,13 +201,10 @@ function Salon(props) {
 
   const reduceItemSummary = (itemID) => {
     const index = order.findIndex((item) => item.id === itemID);
-    order[index].quantity--
-    setOrder([...order]);
+      order[index].quantity--
+      setOrder([...order]);
+         
   }
-
-
-
-
 
   const removeItem = (itemID) => {
     const newOrder = [];
@@ -151,9 +221,10 @@ function Salon(props) {
     return order ? totalItemPrice : '0'
   }
 
-  console.log(useSelector(state => state.userLogged))
-  console.log(useSelector(state => state.userEmail))
-  console.log(useSelector(state => state.userLocal))
+
+  //console.log(useSelector(state => state.userLogged))
+  //console.log(useSelector(state => state.userEmail))
+  //console.log(useSelector(state => state.userLocal))
 
   return (
     <div className='container-fluid'>
@@ -208,11 +279,11 @@ function Salon(props) {
           {status ?
             <><h3 className='font-style-orange'>Menu Café Da Manhã</h3><section className='items-list row mx-auto'>
               {breakfast.map(item =>
-                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} butClick={() => { addItem(item) }} />)}</section></>
+                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} selectClick={(e) => setOptions(e.target.value)} butClick={() => { addItem(item) }} />)}</section></>
             :
             <><h3 className='font-style-orange'>Menu All Day</h3><section className='items-list row mx-auto'>
               {allDay.map(item =>
-                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} butClick={() => { addItem(item) }} />)}</section></>
+                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} selectClick={(e) => setOptions(e.target.value)}  butClick={() => { addItem(item) }} />)}</section></>
           }
         </div>
 
@@ -225,7 +296,7 @@ function Salon(props) {
 
           <div className='item-summary-box mx-auto'>
             {order.map(item => <ItemSummary
-              key={item.id} setOptions={options} itemId={item.id} addItemSummary={addItemSummary} reduceItemSummary={reduceItemSummary} quantity={item.quantity} item_name={item.name} price={item.price} deleteClick={() => { removeItem(item) }}
+              key={item.id} setOptions={item.option} itemId={item.id} addItemSummary={addItemSummary} reduceItemSummary={reduceItemSummary} quantity={item.quantity} item_name={item.name} price={item.price} deleteClick={() => { removeItem(item) }}
             />)}
           </div>
 

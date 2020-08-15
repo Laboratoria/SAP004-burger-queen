@@ -17,7 +17,13 @@
     background-color: #FFD373;
     color           : #F2522E;
     height          : 30px;
+    width: 110px;
     font-weight     : bold;
+    position        : absolute;
+    bottom          : 0;
+    left: 0;
+    margin-bottom: 5%;
+    
 }
 
 .btn-add-item {
@@ -25,5 +31,10 @@
     color           : #FFD373;
     position        : absolute;
     bottom          : 0;
-    right           : 3%;
+    right           : 0;
+}
+
+.font-size{
+    font-size: 20px;
+    margin-right: 4%;
 }

@@ -10,6 +10,7 @@ const ItemSummary = (props) => {
         <div className='item-summary-list w-100 my-sm-2 '>
             <div className='font-style text-center'>{props.item_name}</div>
             <div className='font-style text-center'>{props.setOptions}</div>
+            
 
             <div className="quantity-and-price">
                 <button className='btn-quantity' onClick={() => props.reduceItemSummary(props.itemId)}>-</button>
