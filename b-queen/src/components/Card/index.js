@@ -4,11 +4,18 @@ import './style.css';
 
 const Card = (props) => {
 
-    
-    let arrayRequestsNames = [];
+    let arrayRequests = [];
     for(let arrayItem of props.viewRequests){
-        arrayRequestsNames.push(arrayItem.name)
-    }  
+        arrayRequests.push(
+            {
+                name: arrayItem.name,
+                quantity: arrayItem.quantity,
+                option: arrayItem.option
+            }
+        )
+        
+    }    
+
 
     return (
 
@@ -18,8 +25,12 @@ const Card = (props) => {
             <h6>Atendente: {props.worker}</h6>
 
             <div className="view-orders mx-auto text-center">
-            {arrayRequestsNames.map(item => 
-                <p>{item}</p>
+            {arrayRequests.map(item => 
+                <>
+                    <p>{item.quantity} x {item.name}</p>
+                    <p>{item.option}</p>
+                    <hr/>
+                </>
             )}
             </div>
             <h6>{props.time}</h6>

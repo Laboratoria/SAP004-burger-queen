@@ -40,6 +40,7 @@ const Kitchen = () => {
     }, []);
     
     const sendReadyOrders = (item) => {
+        console.log(allRequestsToMake)
         firebase.firestore().collection("orders-shipped").doc(item.id).delete().then(function() {
             console.log("Document successfully deleted!");
         }).catch(function(error) {
