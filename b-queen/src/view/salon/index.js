@@ -111,8 +111,8 @@ function Salon(props) {
   }
 
   const addItem = (itemID) => {
-    let index = order.findIndex((item) => item.id === itemID.id);
-
+    let index = order.findIndex((item) => item.id === itemID.id + options);
+    console.log(itemID.id + options)
     if(status == true){
       console.log("manha")
       const indexBF = breakfast.findIndex((item) => item.id === itemID.id);
@@ -148,7 +148,7 @@ function Salon(props) {
     }else{
       console.log("dia")
       let indexAD = allDay.findIndex((item) => item.id === itemID.id);
-      console.log(allDay)
+  
       if(allDay[indexAD].options !== undefined){
         if(options !== ""){
           if (index === -1) {
@@ -167,8 +167,10 @@ function Salon(props) {
             //setOrder([...order, { ...itemID, quantity: 1 }]);
             setOrder( [...order, newItem])
             setOptions("");
-            console.log(allDay)
+            console.log(newItem.id)
           } else {
+
+            //let indexSelect = order.findIndex((item) => item.id === newItem.id);
             order[index].quantity++
             setOrder([...order]);
             setOptions("");
@@ -189,7 +191,7 @@ function Salon(props) {
       }
       changeAllSelectValue(allDay)
     }  
-    console.log(order)    
+       
     changeSelectValue(itemID, "selectedItem")
   }
 
