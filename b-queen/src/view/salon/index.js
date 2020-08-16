@@ -91,8 +91,8 @@ function Salon(props) {
                   setClientNameValue("");
                   setTableNumberValue("");
                 })
-                setTimeout(() => {setStatusSendRequest("nulo")}, 4000)
-                              })              
+                setTimeout(() => {setStatusSendRequest("nulo")}, 5000)
+              })              
             })
             
     }else{
@@ -350,11 +350,13 @@ function Salon(props) {
             className='btn-send-to-kitchen btn-lg'
             handleClick={sendRequest}
           />
-        </div>
+        
 
         {statusSendRequest == "enviado" ? <div class="alert alert-success" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Pedido enviado com <strong>SUCESSO</strong>!</div> : ""}
 
         {statusSendRequest == "erroAoEnviar" ? <div class="alert alert-warning" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Houve um <strong>ERRO</strong> ao enviar o pedido!</div> : ""}
+
+        </div>
 
       </div>
     </div>
