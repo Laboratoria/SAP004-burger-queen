@@ -339,23 +339,22 @@ function Salon(props) {
             <span>R$ {totalPrice()}</span>
           </div>
 
-          <Button
-            name='Enviar pedido para cozinha'
-            className='btn-send-to-kitchen btn-lg'
-            handleClick={sendRequest}
-          />
-
-          {statusSendRequest == "enviado" ? <div class="alert alert-success" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Pedido enviado com <strong>SUCESSO</strong>!</div> : ""}
-
-          {statusSendRequest == "erroAoEnviar" ? <div class="alert alert-warning" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Houve um <strong>ERRO</strong> ao enviar o pedido!</div> : ""}
-
           {statusSendRequestValue == "tableNumberNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Insira o número da mesa! </div> : ""}
 
           {statusSendRequestValue == "clientNameNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Insira o nome do cliente! </div> : ""}
 
           {statusSendRequestValue == "orderNulo" ? <div class="alert alert-danger" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Adicione itens para enviar o pedido! </div> : ""}
 
+          <Button
+            name='Enviar pedido para cozinha'
+            className='btn-send-to-kitchen btn-lg'
+            handleClick={sendRequest}
+          />
         </div>
+
+        {statusSendRequest == "enviado" ? <div class="alert alert-success" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Pedido enviado com <strong>SUCESSO</strong>!</div> : ""}
+
+        {statusSendRequest == "erroAoEnviar" ? <div class="alert alert-warning" role="alert"><button type="button" className="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> Houve um <strong>ERRO</strong> ao enviar o pedido!</div> : ""}
 
       </div>
     </div>
