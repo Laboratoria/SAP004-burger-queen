@@ -23,8 +23,6 @@ const ItemSummary = (props) => {
                 className='deteleButton'
                 handleClick={props.deleteClick}
             />
-
-
         </div>
 
     )

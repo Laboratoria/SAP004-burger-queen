@@ -3,14 +3,12 @@ import firebase from '../../config/firebase';
 import 'firebase/firestore';
 import './salon.css';
 import '../../reset.css';
-import { Link } from 'react-router-dom';
 import { history } from '../../history';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import Items from '../../components/Items';
 import ItemSummary from '../../components/Item';
-import { useSelector } from 'react-redux';
 
 function Salon(props) {
 
@@ -60,7 +58,7 @@ function Salon(props) {
   };
 
   const sendRequest = () => {
-
+        
     if ((tableNumberValue !== "" && clientNameValue !== "") && order.length !== [].length) {
             
           firebase.firestore().collection('users').where('uid', '==', firebase.auth().currentUser.uid)
@@ -108,13 +106,20 @@ function Salon(props) {
       }
 
     }
+    
+  }
+
+  const cancelRequest = () => {
+    setOrder([]);
+    setClientNameValue("");
+    setTableNumberValue("");
   }
 
   const addItem = (itemID) => {
     let index = order.findIndex((item) => item.id === itemID.id + options);
-    console.log(itemID.id + options)
+    //console.log(itemID.id + options)
     if(status == true){
-      console.log("manha")
+      //console.log("manha")
       const indexBF = breakfast.findIndex((item) => item.id === itemID.id);
 
       if(breakfast[indexBF].options !== undefined){
@@ -128,7 +133,7 @@ function Salon(props) {
             setOrder([...order]);
             order[index]["option"] = options;
             setOptions("");
-            console.log(order)
+            order[indexBF].variablePrice = order[indexBF].price * order[indexBF].quantity;
           }
         }
       }else{
@@ -140,13 +145,13 @@ function Salon(props) {
           order[index].quantity++
           setOrder([...order]);
           order[index]["option"] = options;
-          setOptions("");
-          console.log(order)
+          setOptions("");  
+          order[index].variablePrice = order[index].price * order[index].quantity;        
         }
       }
       changeAllSelectValue(breakfast)
     }else{
-      console.log("dia")
+      //console.log("dia")
       let indexAD = allDay.findIndex((item) => item.id === itemID.id);
   
       if(allDay[indexAD].options !== undefined){
@@ -174,6 +179,7 @@ function Salon(props) {
             order[index].quantity++
             setOrder([...order]);
             setOptions("");
+            order[index].variablePrice = order[index].price * order[index].quantity;   
           }
         }
       }else{
@@ -186,20 +192,20 @@ function Salon(props) {
           setOrder([...order]);
           order[index]["option"] = options;
           setOptions("");
-          console.log(order)
+          order[index].variablePrice = order[index].price * order[index].quantity;   
         }
       }
       changeAllSelectValue(allDay)
     }  
        
-    changeSelectValue(itemID, "selectedItem")
+    changeSelectValue(itemID, "selectedItem");
   }
 
   const addItemSummary = (itemID) => {
-    console.log(itemID)
     const index = order.findIndex((item) => item.id === itemID);
     order[index].quantity++
     setOrder([...order]);
+    order[index].variablePrice = order[index].price * order[index].quantity;
   }
 
   const reduceItemSummary = (itemID) => {
@@ -207,6 +213,7 @@ function Salon(props) {
     if(order[index].quantity !== 1){
       order[index].quantity--
       setOrder([...order]);
+      order[index].variablePrice = order[index].price * order[index].quantity;
     } 
                
   }
@@ -239,7 +246,6 @@ function Salon(props) {
     }
 
   }
-
 
   //console.log(useSelector(state => state.userLogged))
   //console.log(useSelector(state => state.userEmail))
@@ -330,7 +336,7 @@ function Salon(props) {
 
           <div className='item-summary-box mx-auto'>
             {order.map(item => <ItemSummary
-              key={item.id} setOptions={item.option} itemId={item.id} addItemSummary={addItemSummary} reduceItemSummary={reduceItemSummary} quantity={item.quantity} item_name={item.name} price={item.price} deleteClick={() => { removeItem(item) }}
+              key={item.id} setOptions={item.option} itemId={item.id} addItemSummary={addItemSummary} reduceItemSummary={reduceItemSummary} quantity={item.quantity} item_name={item.name} price={item.variablePrice} deleteClick={() => { removeItem(item) }}
             />)}
           </div>
 
@@ -349,6 +355,12 @@ function Salon(props) {
             name='Enviar pedido para cozinha'
             className='btn-send-to-kitchen btn-lg'
             handleClick={sendRequest}
+          />
+
+          <Button
+            name='Cancelar pedido'
+            className='btn-send-to-kitchen btn-lg mt-3'
+            handleClick={cancelRequest}
           />
         
 

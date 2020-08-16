@@ -90,9 +90,9 @@ function Login(props) {
     signIn(email, password);
   }
  
-  console.log(useSelector(state => state.userLogged))
-  console.log(useSelector(state => state.userEmail))
-  console.log(useSelector(state => state.userLocal))
+  //console.log(useSelector(state => state.userLogged))
+  //console.log(useSelector(state => state.userEmail))
+  //console.log(useSelector(state => state.userLocal))
 
   return (
     <div className='login-content d-flex'>
