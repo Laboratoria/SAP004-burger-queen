@@ -13,8 +13,8 @@ const Items = (props) => {
 
             <div className="container-options-price d-flex justify-content-between">
                 {props.options ? (
-                    <select className="options" onChange={props.selectClick}>
-                        <option selected disabled>Selecione</option>
+                    <select className="options" value={props.selectValue} onChange={props.selectClick}>
+                        <option value="selectedItem" selected disabled hidden>Selecione</option>
                         {props.options.map((option) => <option value={option}>{option}</option>)}
                     </select>
                 ) : ''}

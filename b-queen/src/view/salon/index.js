@@ -25,7 +25,7 @@ function Salon(props) {
   const menuAllDay = [];
   const menuBreakfast = [];
   const [options, setOptions] = useState('');
-  
+    
   const firebaseRequisition = (collectionP, arrayP, setP) => {
     firebase
       .firestore()
@@ -51,10 +51,12 @@ function Salon(props) {
 
   const showMenuAllDay = () => {
     setStatus(false);
+    console.log(allDay)
   };
 
   const showMenuBreakfast = () => {
     setStatus(true);
+    console.log(breakfast)
   };
 
   const sendRequest = () => {
@@ -160,9 +162,7 @@ function Salon(props) {
               options: allDay[indexAD].options,
               price: allDay[indexAD].price,
               quantity: 1
-            }
-
-            
+            }           
             
             //setOrder([...order, { ...itemID, quantity: 1 }]);
             setOrder( [...order, newItem])
@@ -188,8 +188,8 @@ function Salon(props) {
         }
       }
     }  
-    console.log(order)
-    
+    console.log(order)    
+    changeSelectValue(itemID, "selectedItem")
   }
 
   const addItemSummary = (itemID) => {
@@ -216,11 +216,15 @@ function Salon(props) {
       }
     }
     setOrder(newOrder);
-  };
+  }
 
   const totalPrice = () => {
     const totalItemPrice = order.reduce((acc, current) => acc + (current.price * current.quantity), 0);
     return order ? totalItemPrice : '0'
+  }
+
+  const changeSelectValue = (itemID, valueSelect) => {
+    itemID.selectValue = valueSelect;
   }
 
 
@@ -281,11 +285,26 @@ function Salon(props) {
           {status ?
             <><h3 className='font-style-orange'>Menu Café Da Manhã</h3><section className='items-list row mx-auto'>
               {breakfast.map(item =>
-                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} selectClick={(e) => setOptions(e.target.value)} butClick={() => { addItem(item) }} />)}</section></>
+                <Items key={item.id} 
+                name={item.name} 
+                price={item.price} 
+                options={item.options} 
+                selectValue={item.selectValue}
+                selectClick={(e) => {
+                  setOptions(e.target.value)
+                  changeSelectValue(item, e.target.value)
+                }} 
+                butClick={() => { addItem(item) }} />)}</section></>
             :
             <><h3 className='font-style-orange'>Menu All Day</h3><section className='items-list row mx-auto'>
               {allDay.map(item =>
-                <Items key={item.id} name={item.name} price={item.price} setOptions={setOptions} options={item.options} selectClick={(e) => setOptions(e.target.value)}  butClick={() => { addItem(item) }} />)}</section></>
+                <Items key={item.id} name={item.name} price={item.price} options={item.options} 
+                selectValue={item.selectValue} 
+                selectClick={(e) => {
+                  setOptions(e.target.value)
+                  changeSelectValue(item, e.target.value)
+                }}  
+                butClick={() => { addItem(item) }} />)}</section></>
           }
         </div>
 
