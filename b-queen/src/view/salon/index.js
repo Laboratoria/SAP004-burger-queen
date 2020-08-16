@@ -25,7 +25,7 @@ function Salon(props) {
   const menuAllDay = [];
   const menuBreakfast = [];
   const [options, setOptions] = useState('');
-    
+      
   const firebaseRequisition = (collectionP, arrayP, setP) => {
     firebase
       .firestore()
@@ -144,7 +144,7 @@ function Salon(props) {
           console.log(order)
         }
       }
-      
+      changeAllSelectValue(breakfast)
     }else{
       console.log("dia")
       let indexAD = allDay.findIndex((item) => item.id === itemID.id);
@@ -187,6 +187,7 @@ function Salon(props) {
           console.log(order)
         }
       }
+      changeAllSelectValue(allDay)
     }  
     console.log(order)    
     changeSelectValue(itemID, "selectedItem")
@@ -225,6 +226,16 @@ function Salon(props) {
 
   const changeSelectValue = (itemID, valueSelect) => {
     itemID.selectValue = valueSelect;
+  }
+
+  const changeAllSelectValue = (arrayMenu) => {
+
+    for(let itemMenu of arrayMenu){
+      if(itemMenu.options !== undefined){
+        itemMenu.selectValue = "selectedItem";
+      }
+    }
+
   }
 
 
