@@ -1,0 +1,80 @@
+.container-fluid{
+    padding: 0;
+}
+
+.content-both-sides {
+    margin: 0;
+}
+
+.content-on-the-left {
+    border-right: 2px solid #F21D56;
+}
+
+.input {
+    width: 170px;
+}
+
+.customizingInput{
+    color: #F21D56;
+    background-color: #ffffcc;
+}
+
+.customizingInput:focus{
+    color: #F21D56;
+}
+
+.select-menu-bttn {
+    background-color: #F29435;
+    color           : #ffffff;
+    height          : 100px;
+}
+
+.select-menu-bttn:hover{
+ color: #F21D56;   
+}
+
+.customer-info-box {
+    color             : #FFD373;
+    font-weight       : 900;
+    font-size         : large;
+    border-radius     : 8px;
+    width             : auto;
+    height            : 87px;
+    padding           : 10px;
+    background-color  : #F2522E;
+    margin: auto;
+}
+
+.font-style-orange {
+    color      : #F2522E;
+    font-size  : larger;
+    font-weight: bolder;
+}
+
+.font-style-pink {
+    color      : #F21D56;
+    font-size  : larger;
+    font-weight: bolder;
+}
+
+.forInputClientTable{
+    width: 120px;
+}
+
+.forExibition{
+    display: block;
+}
+
+.btn-send-to-kitchen {
+    font-weight: bold;
+    background-color: #F21D56;
+    color           : #FFD373;
+    border: 1px solid transparent;
+    width: inherit;
+    
+}
+
+.btn-send-to-kitchen:hover{
+    color           : #FFD373;
+    
+}

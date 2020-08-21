@@ -1,0 +1,16 @@
+.for-title{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 4%;
+    color: #F21D56;
+    font-weight: bold;
+    font-family: 'VT323', monospace;
+}
+
+.container{
+    text-align: center;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: center;*/
+}

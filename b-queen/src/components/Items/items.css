@@ -1,0 +1,41 @@
+.item-content {
+    border-radius: 8px;
+    width        : 48%;
+    padding      : 2%;
+    margin       : auto;
+    background   : #FFD373;
+    box-shadow   : 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display      : block;
+    position     : relative;
+    height       : 117px;
+    border: 1px solid #F21D56;
+
+}
+
+.options {
+    border-radius   : 8px;
+    border          : 1px solid #F2522E;
+    background-color: #FFD373;
+    color           : #F2522E;
+    height          : 30px;
+    width: 123px;
+    font-weight     : bold;
+    position        : absolute;
+    bottom          : 0;
+    left: 0;
+    margin-bottom: 5%;
+    
+}
+
+.btn-add-item {
+    background-color: #F21D56;
+    color           : #FFD373;
+    position        : absolute;
+    bottom          : 0;
+    right           : 0;
+}
+
+.font-size{
+    font-size: 20px;
+    margin-right: 4%;
+}

@@ -1,0 +1,44 @@
+.basic-structure{
+    height: 430px;
+    width: 300px;
+    background-color: #F2522E;
+    color: #F7D7D6;
+    border-radius: 8px;
+    border-color: #F7D7D6;
+    border: solid 2px;
+    position:relative;   
+    padding-top: 2%;
+    margin-bottom: 60px;
+    display: inline-block;  
+    /*display: inline-table;*/
+}
+
+.view-orders{
+    overflow:auto;
+    max-height: 200px;
+    height: auto;
+    width: 280px;
+    background-color: #F7D7D6;
+    color: #F2522E;
+    border-radius: 8px;
+    border: solid 2px;
+    border-color: #F21D56;
+    margin-top: 5%;
+}
+
+.btn-card{
+    background-color: #F21D56;
+    color: #F2B737;
+    font-weight: bold;
+    transition: 1s;
+    width:100%;
+    position: absolute;
+    bottom:0;  
+    left: 0px;
+     
+}
+
+.btn-card:hover{
+    background-color: #F7D7D6;
+    color: #F21D56;
+}

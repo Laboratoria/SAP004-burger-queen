@@ -1,0 +1,24 @@
+.input-style{
+    color: #f21d57;
+}
+
+.input-style:focus{
+    color: #f21d57;
+}
+
+
+.for-placeholder input::-webkit-input-placeholder { 
+    color: #F2B737;
+}
+
+.for-placeholder input:-moz-placeholder { 
+    color: #F2B737;
+}
+  
+.for-placeholder input:-ms-input-placeholder { 
+    color: #F2B737;
+  }
+  
+.for-placeholder input::-moz-placeholder { 
+    color: #F2B737;
+  }

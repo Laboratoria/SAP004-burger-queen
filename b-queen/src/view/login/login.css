@@ -1,0 +1,50 @@
+.login-content {
+    width: 100vw;
+    padding: 15%;
+    margin: auto;
+    height: 100vh;
+    align-items: center;
+}
+
+.btn-login {
+    background-color: #F21D56;
+    color: #F2B737;
+    /*max-width: 650px;*/
+}
+
+.btn-login:hover {
+    background-color: #facbca;
+    color: #F21D56;
+}
+
+.form-signin {
+    max-width: 350px;
+}
+
+.nav-register{
+    color: #F21D56;
+    background-color: #F2B737
+}
+
+.nav-register a {
+    text-decoration: none;
+    color: #F21D56;
+    transition: .3s ease-in;
+    
+}
+
+.nav-register a:hover {
+    color: #facbca;
+}
+
+.error-msg {
+    font-size: larger;
+    text-align: center;
+    color: #F21D56;
+    border-radius: 8px;
+    margin-top: 3%;
+    border: 2px solid #F21D56;
+    padding: 2%;
+    background-color: #f7d7d6;
+    font-weight: bold;
+}

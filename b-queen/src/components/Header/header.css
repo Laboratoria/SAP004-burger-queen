@@ -1,0 +1,26 @@
+.header-content {
+    border-bottom: 2px solid #F21D56;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.btn-header {
+    padding: 1%;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #F21D56;
+    color: #F2B737;
+    transition: 1s;
+}
+
+.btn-header:hover{
+    color: #f7d7d6;
+    background-color: #f2522e;
+}
+
+.mini-logo {
+    max-width: 8%;
+    width: auto;
+    height: auto;
+}
+

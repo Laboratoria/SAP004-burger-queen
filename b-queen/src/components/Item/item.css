@@ -1,0 +1,52 @@
+.item-summary-list {
+    background   : #FFD373;
+    width        : auto;
+    height       : auto;
+    border-radius: 8px;
+    margin       : auto;
+    box-shadow   : 0px 2px 2px rgba(0, 0, 0, 0.25);
+    position     : relative;
+    display      : inline-block;
+    padding-top  : 1%;
+    padding-bottom: 2%;
+    border       : 1px solid #F21D56;
+}
+
+.font-style {
+    color      : #F2522E;
+    font-weight: 700;
+    font-size  : medium;
+    overflow   : auto;
+    height     : auto;
+    max-height : 38px;
+    margin-top : 2px;
+}
+
+.btn-quantity {
+    border-radius: 4px;
+    border       : 1px solid #F2522E;
+    font-weight  : bold;
+}
+
+.counter {
+    border-radius: 2px;
+    border       : 1px solid black;
+    background   : white;
+    margin       : 1%;
+    padding      : 1%;
+}
+
+.deteleButton {
+    background-color: #ff1a1a;
+    color           : #F2B737;
+    border          : none;
+    position        : absolute;
+    bottom          : 0;
+    right           : 0px;
+
+}
+
+.quantity-and-price {
+    margin-left: 2%;
+    margin-top : 0;
+}
