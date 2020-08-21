@@ -166,6 +166,7 @@ function Salon(props) {
               option: allDay[indexAD].option,
               options: allDay[indexAD].options,
               price: allDay[indexAD].price,
+              variablePrice: allDay[indexAD].variablePrice,
               quantity: 1
             }           
             
